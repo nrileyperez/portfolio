@@ -543,13 +543,13 @@ footer p {
 
 /* Increase work item header and description text size with underline */
 .work-item .work-info h3 {
-  font-size: 2rem;
+  font-size: 1.5rem;
   border-bottom: 2px solid #fff;
   padding-bottom: 0.5rem;
 }
 
 .work-item .work-info p {
-  font-size: 1.5rem;
+  font-size: 0.8rem;
 }
 
 /* Enlarged Work section title */
@@ -907,7 +907,7 @@ footer p {
     width: 150%;
   }
   .resume-main h3 {
-    transform: translateX(-18%);
+    transform: translateX(-15%);
   }
   .resume-bg-container .section-title{
     transform: translateX(-30%);
@@ -915,10 +915,21 @@ footer p {
   }
 
   .resume-main .experience-item{
-    transform: translateX(-15%);
+    transform: translateX(-10%);
+    width: 110%;
   }
   .resume-main .experience-date{
     transform: translateX(-40%) scale(0.7);
+  }
+
+
+  .resume-main .experience-section .experience-item p {
+    font-size: 0.9rem;
+    width: 100%;
+  }
+  .resume-main .experience-section .experience-item li {
+    font-size: 0.65rem;
+    width: 100%;
   }
   /* Footer: adjust spacing */
   footer {
