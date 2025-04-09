@@ -1,0 +1,521 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>ギャラリー | Collage</title>
+  <!-- Japanese Fonts -->
+  <link
+    href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&family=Noto+Serif+JP:wght@400;700&display=swap"
+    rel="stylesheet"
+  >
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Open+Sans:wght@300;400&display=swap" rel="stylesheet">
+  <style>
+    /* RESET & BASE STYLES */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      font-family: 'Noto Sans JP', sans-serif;
+      background-color: #fefefe;
+      color: #333;
+      overflow-x: hidden;
+    }
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    /* HEADER & NAVIGATION */
+    header {
+      background-color: #fff;
+      border-bottom: 1px solid #ccc;
+      padding: 1rem 0;
+    }
+    nav,
+    .nav-links {
+      display: flex;
+    }
+    
+    nav {
+      justify-content: space-around;
+      align-items: center;
+      height: 10vh;
+      z-index: 1;
+    }
+    
+    .nav-links {
+      gap: 2rem;
+      list-style: none;
+      font-size: 1.2rem;
+      z-index: 1;
+    }
+    
+    .nav-links li {
+      display: inline-block;
+      margin: 0 1rem;
+      transition: transform 0.3s ease;
+      z-index: 1;
+    }
+    
+    .nav-links li:hover {
+      transform: scale(1.2);
+    }
+
+    a {
+      color: black;
+      text-decoration: none;
+      text-decoration-color: white;
+      z-index: 1;
+    }
+    
+    a:hover {
+      color: grey;
+      text-decoration: underline;
+      text-underline-offset: 1rem;
+      text-decoration-color: rgb(181, 181, 181);
+      z-index: 1;
+    }
+    
+    .logo {
+      font-size: 1.5rem;
+      font-family: 'Montserrat', sans-serif;
+      z-index: 1;
+    }
+    
+    .logo:hover {
+      cursor: default;
+      z-index: 1;
+    }
+    
+    a {
+      color: black;
+      text-decoration: none;
+      text-decoration-color: white;
+    }
+    
+    a:hover {
+      color: grey;
+      text-decoration: underline;
+      text-underline-offset: 1rem;
+      text-decoration-color: rgb(181, 181, 181);
+    }
+    
+    .logo {
+      font-size: 1.5rem;
+      font-family: 'Montserrat', sans-serif;
+    }
+    
+    .logo:hover {
+      cursor: default;
+    }
+    
+
+    /* PAGE TITLE & SUBTITLE */
+    .page-title {
+      text-align: center;
+      font-size: 3rem;
+      margin-top: 4rem;
+      font-family: 'Noto Serif JP', serif;
+      color: #111;
+      letter-spacing: 0.05em;
+      z-index: 2;
+    }
+    .page-subtitle {
+      text-align: center;
+      margin-top: 0.5rem;
+      font-size: 1.2rem;
+      color: #b60909;
+      font-family: 'Noto Sans JP', sans-serif;
+      margin-bottom: 4rem;
+    }
+
+    /* COLLAGE GRID */
+    .collage-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      grid-auto-rows: 200px;
+      gap: 1rem;
+      max-width: 1200px;
+      margin: 2rem auto;
+      padding: 0 1rem;
+      position: relative;
+      z-index: 1;
+    }
+
+    /* COLLAGE BLOCKS (Images & Text) */
+    .collage-block {
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: transform 0.3s ease;
+      /* Load-in animation: start hidden */
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+      z-index: 1;
+    }
+    .collage-block:hover {
+      transform: scale(1.03);
+      z-index: 1;
+    }
+    .collage-block.loaded {
+      opacity: 1;
+      transform: translateY(0);
+      z-index: 1;
+    }
+
+    /* IMAGE BLOCKS */
+    .collage-block img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      filter: grayscale(100%);
+      transition: filter 0.5s ease, opacity 0.5s ease;
+    }
+    .collage-block:hover img {
+      filter: none;
+      opacity: 0.9;
+    }
+
+    /* TEXT OVERLAY (for image blocks) */
+    .collage-text {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      text-align: center;
+      font-family: 'Noto Sans JP', sans-serif;
+      font-weight: bold;
+      color: #fff;
+      font-size: 1.2rem;
+      opacity: 0;
+      transition: opacity 0.4s ease;
+    }
+    .collage-block:hover .collage-text {
+      opacity: 1;
+    }
+
+    /* PURE TEXT BLOCKS (no images) */
+    .text-block {
+      font-family: 'Noto Sans JP', sans-serif;
+      font-weight: 700;
+      font-size: 2rem;
+      color: #fff;
+      text-align: center;
+      line-height: 1.3;
+      padding: 1rem;
+    }
+
+    /* FOOTER */
+    footer {
+      padding: 1rem;
+      text-align: center;
+      border-top: 1px solid #ccc;
+      margin-top: 2rem;
+      font-size: 0.9rem;
+    }
+    .background {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 50%;
+      height: 100%;
+      background: url('./images/4.jpg') no-repeat center center;
+      background-size: cover;
+      filter: blur(12px);
+      z-index: -1;
+    }
+
+    /* MOBILE OPTIMIZATION */
+    @media (max-width: 768px) {
+      /* Adjust header and navigation */
+      header nav {
+        flex-direction: column;
+        padding: 1rem;
+      }
+      .nav-links {
+        flex-direction: column;
+        gap: 1rem;
+        align-items: center;
+      }
+      /* Adjust page title/subtitle sizes */
+      .page-title {
+        font-size: 2rem;
+        margin-top: 2rem;
+      }
+      .page-subtitle {
+        font-size: 1rem;
+        margin-bottom: 2rem;
+      }
+      /* Adjust collage grid layout */
+      .collage-grid {
+        grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+        grid-auto-rows: 150px;
+        gap: 0.5rem;
+        margin: 1rem;
+        padding: 0 0.5rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="background"></div>
+  <!-- HEADER -->
+  <header>
+    <nav>
+      
+      <div class="logo">
+        <a href="index.html">Noah Riley</a>
+      </div>
+      <ul class="nav-links">
+        <li><a href="resume.html" data-jp="レジュメ">WORK</a></li>
+        <li><a href="projects.html" data-jp="プロジェクト">RESUME</a></li>
+        <li><a href="gallery.html" data-jp="ギャラリー">GALLERY</a></li>
+        <li><a href="contact.html" data-jp="コンタクト">CONTACT</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- MAIN CONTENT -->
+  <main>
+    <!-- Animated Title & Subtitle -->
+    <h1 id="animated-title" class="page-title">ギャラリー</h1>
+    <p id="animated-subtitle" class="page-subtitle">わがままを育てる・知る・試す・学ぶ</p>
+
+    <!-- COLLAGE GRID CONTAINER -->
+    <section class="collage-grid">
+      <!-- IMAGE BLOCKS -->
+      <div class="collage-block">
+        <img src="./images/ComfyUI_00029_.png" alt="Tokyo 6">
+        <div class="collage-text">無限の路地</div>
+      </div>
+      <div class="collage-block">
+        <img src="./images/ComfyUI_00028_.png" alt="Tokyo 6">
+        <div class="collage-text">無限の路地</div>
+      </div>
+      <div class="collage-block">
+        <img src="./images/ComfyUI_00026_.png" alt="Tokyo 6">
+        <div class="collage-text">無限の路地</div>
+      </div>
+      <div class="collage-block">
+        <img src="./images/ComfyUI_00025_.png" alt="Tokyo 6">
+        <div class="collage-text">無限の路地</div>
+      </div>
+      <div class="collage-block">
+        <img src="./images/ComfyUI_00024_.png" alt="Tokyo 6">
+        <div class="collage-text">無限の路地</div>
+      </div>
+      <div class="collage-block">
+        <img src="./images/ComfyUI_00023_.png" alt="Tokyo 6">
+        <div class="collage-text">無限の路地</div>
+      </div>
+      <div class="collage-block">
+        <img src="./images/ComfyUI_00021_.png" alt="Tokyo 1">
+        <div class="collage-text">東京の夜</div>
+      </div>
+      <div class="collage-block">
+        <img src="./images/ComfyUI_00020_.png" alt="Tokyo 2">
+        <div class="collage-text">未知を探す</div>
+      </div>
+      <div class="collage-block">
+        <img src="./images/ComfyUI_00019_.png" alt="Tokyo 3">
+        <div class="collage-text">新しい視点</div>
+      </div>
+      <div class="collage-block">
+        <img src="./images/ComfyUI_00018_.png" alt="Tokyo 4">
+        <div class="collage-text">夜景の色</div>
+      </div>
+      <div class="collage-block">
+        <img src="./images/ComfyUI_00022_ (1).png" alt="Tokyo 5">
+        <div class="collage-text">サイバーパンク</div>
+      </div>
+      <div class="collage-block">
+        <img src="./images/ComfyUI_00008_.png" alt="Tokyo 6">
+        <div class="collage-text">無限の路地</div>
+      </div>
+      <div class="collage-block">
+        <img src="./images/ComfyUI_00009_.png" alt="Tokyo 7">
+        <div class="collage-text">光と影</div>
+      </div>
+      <div class="collage-block">
+        <img src="./images/ComfyUI_00001_.png" alt="Tokyo 8">
+        <div class="collage-text">変わりゆく街</div>
+      </div>
+      <div class="collage-block">
+        <img src="./images/ComfyUI_00002_.png" alt="Tokyo 9">
+        <div class="collage-text">人工の美</div>
+      </div>
+      <div class="collage-block">
+        <img src="./images/ComfyUI_00003_.png" alt="Tokyo 10">
+        <div class="collage-text">夜の躍動</div>
+      </div>
+      <div class="collage-block">
+        <img src="./images/ComfyUI_00004_.png" alt="Tokyo 11">
+        <div class="collage-text">渋谷交差点</div>
+      </div>
+
+      <!-- PURE TEXT BLOCKS -->
+      <div class="collage-block text-block">
+        わがままを<br>育てる
+      </div>
+      <div class="collage-block text-block">
+        知る。<br>試す。<br>学ぶ。
+      </div>
+      <div class="collage-block text-block">
+        2025年の<br>デザイン
+      </div>
+      <div class="collage-block text-block">
+        コラージュで<br>表現する
+      </div>
+    </section>
+  </main>
+
+  <!-- FOOTER -->
+  <footer>
+    <p>&copy; 2025 Noah Riley. All rights reserved.</p>
+  </footer>
+
+  <!-- SCRIPT FOR RANDOM COLORS, GRID SPANS, LOAD-IN ANIMATION, AND CLICK EXPANSION -->
+  <script>
+    // Array of bright colors reminiscent of a bold collage style
+    const colorPalette = [
+      '#E53935', '#1E88E5', '#43A047', '#FB8C00', '#8E24AA',
+      '#FDD835', '#00897B', '#FF5722', '#7E57C2', '#F06292',
+      '#5E35B1', '#039BE5', '#FBC02D', '#D81B60', '#795548'
+    ];
+
+    window.addEventListener('DOMContentLoaded', () => {
+      const collageGrid = document.querySelector('.collage-grid');
+      // Use dense auto-flow to fill gaps
+      collageGrid.style.gridAutoFlow = "dense";
+
+      const collageBlocks = document.querySelectorAll('.collage-block');
+      collageBlocks.forEach((block) => {
+        // Assign a random background color
+        const randomColor = colorPalette[Math.floor(Math.random() * colorPalette.length)];
+        block.style.backgroundColor = randomColor;
+
+        // Randomly span 1 or 2 columns/rows
+        const colSpan = Math.floor(Math.random() * 2) + 1;
+        const rowSpan = Math.floor(Math.random() * 2) + 1;
+        block.style.gridColumn = `span ${colSpan}`;
+        block.style.gridRow = `span ${rowSpan}`;
+        // Store original spans in data attributes
+        block.dataset.originalColSpan = colSpan;
+        block.dataset.originalRowSpan = rowSpan;
+
+        // Load each collage block in place with a random delay (0-1000ms)
+        const delay = Math.random() * 1000;
+        setTimeout(() => {
+          block.classList.add('loaded');
+        }, delay);
+
+        // Add click event listener for expanding collage images
+        if (block.querySelector('img')) {
+          block.addEventListener('click', function(event) {
+            event.stopPropagation(); // prevent document click from immediately collapsing
+            // Toggle expanded state on click
+            if (!block.classList.contains('expanded')) {
+              block.classList.add('expanded');
+              block.style.gridColumn = "span 3";
+              block.style.gridRow = "span 3";
+            } else {
+              block.classList.remove('expanded');
+              block.style.gridColumn = `span ${block.dataset.originalColSpan}`;
+              block.style.gridRow = `span ${block.dataset.originalRowSpan}`;
+            }
+          });
+        }
+      });
+
+      // Global click handler: if clicking anywhere not inside an expanded collage block, collapse it.
+      document.addEventListener('click', function(event) {
+        const expandedBlocks = document.querySelectorAll('.collage-block.expanded');
+        expandedBlocks.forEach(function(block) {
+          if (!block.contains(event.target)) {
+            block.classList.remove('expanded');
+            block.style.gridColumn = `span ${block.dataset.originalColSpan}`;
+            block.style.gridRow = `span ${block.dataset.originalRowSpan}`;
+          }
+        });
+      });
+    });
+  </script>
+
+  <!-- TRANSLATION ANIMATION FOR TITLE & SUBTITLE -->
+  <script>
+    // Utility to set a fixed minimum width on an element based on the widest of two texts.
+    function setMinWidthForAnimation(element, textA, textB) {
+      const tempSpanA = document.createElement("span");
+      const tempSpanB = document.createElement("span");
+      tempSpanA.style.font = window.getComputedStyle(element).font;
+      tempSpanA.style.whiteSpace = "nowrap";
+      tempSpanA.style.visibility = "hidden";
+      tempSpanA.textContent = textA;
+      tempSpanB.style.font = window.getComputedStyle(element).font;
+      tempSpanB.style.whiteSpace = "nowrap";
+      tempSpanB.style.visibility = "hidden";
+      tempSpanB.textContent = textB;
+      document.body.appendChild(tempSpanA);
+      document.body.appendChild(tempSpanB);
+      const maxWidth = Math.max(tempSpanA.offsetWidth, tempSpanB.offsetWidth);
+      element.style.minWidth = maxWidth + "px";
+      document.body.removeChild(tempSpanA);
+      document.body.removeChild(tempSpanB);
+    }
+
+    // Generic function to animate text translation letter-by-letter in a loop.
+    function animateText(elementId, textA, textB) {
+      const element = document.getElementById(elementId);
+      // Set a min-width to prevent layout shifts
+      setMinWidthForAnimation(element, textA, textB);
+      
+      let currentLanguage = "A"; // Start with textA
+      
+      function translateTo(nextText) {
+        let currentText = element.textContent;
+        // Erase text letter-by-letter
+        let eraseInterval = setInterval(() => {
+          if (currentText.length > 0) {
+            currentText = currentText.slice(0, -1);
+            element.textContent = currentText;
+          } else {
+            clearInterval(eraseInterval);
+            // Type new text letter-by-letter
+            let i = 0;
+            let typeInterval = setInterval(() => {
+              if (i < nextText.length) {
+                element.textContent += nextText.charAt(i);
+                i++;
+              } else {
+                clearInterval(typeInterval);
+                // Wait then reverse the translation
+                setTimeout(() => {
+                  currentLanguage = (currentLanguage === "A" ? "B" : "A");
+                  let newText = currentLanguage === "A" ? textA : textB;
+                  translateTo(newText);
+                }, 2000);
+              }
+            }, 150);
+          }
+        }, 100);
+      }
+      // Start by translating to the alternate text
+      translateTo(textB);
+    }
+
+    window.addEventListener('DOMContentLoaded', () => {
+      // Animate title: ギャラリー ↔ GALLERY
+      animateText("animated-title", "ギャラリー", "GALLERY");
+      // Animate subtitle: わがままを育てる・知る・試す・学ぶ ↔ MY DIGITAL AI ART EXPERIMENTS
+      animateText("animated-subtitle", "わがままを育てる・知る・試す・学ぶ", "MY DIGITAL AI ART EXPERIMENTS");
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,582 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>My Portfolio</title>
+  <!-- New font imports for modern, trendy typography -->
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Open+Sans:wght@300;400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
+  <style>
+    /* Background image container */
+    .background {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 50%;
+      height: 100%;
+      background: url('./images/4.jpg') no-repeat center center;
+      background-size: cover;
+      filter: blur(22px);
+      z-index: -2;
+    }
+    /* Existing inline styles */
+    .animated-video {
+      display: block;
+      margin: 0 auto;
+      max-width: 400px;
+      width: 100%;
+      height: auto;
+      margin-left: 200px;
+    }
+    .animated-video + p {
+      margin-top: 0;
+    }
+    .animated-video + p {
+      margin-bottom: -100;
+    }
+    
+    /* MOBILE OPTIMIZATION */
+    @media (max-width: 768px) {
+      .background {
+        width: 100%;
+        left: 0;
+        filter: blur(15px);
+      }
+      .animated-video {
+        max-width: 90%;
+        margin-left: 0;
+      }
+      /* Hide desktop nav and show hamburger */
+      #desktop-nav {
+        display: none;
+      }
+      #hamburger-nav {
+        display: block;
+      }
+      nav {
+        flex-direction: column;
+        align-items: center;
+        height: auto;
+        padding: 1rem;
+      }
+      .nav-links-container, .menu-links {
+        width: 100%;
+      }
+      .menu-links a {
+        font-size: 1.2rem;
+        padding: 0.5rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="background"></div>
+  <header>
+    <nav id="desktop-nav">
+      <div class="logo"><a href="index.html">Noah Riley</a></div>
+      <div class="nav-links-container">
+        <ul class="nav-links">
+          <li><a href="#work" data-jp="プロジェクト">WORK</a></li>
+          <li><a href="#resume" data-jp="レジュメ">RESUME</a></li>
+          <li><a href="gallery.html" data-jp="ライブラリー">GALLERY</a></li>
+          <li><a href="contact.html" data-jp="コンタクト">CONTACT</a></li>
+        </ul>
+      </div>
+      <!-- Hamburger Menu for mobile -->
+      <div id="hamburger-nav">
+        <div class="hamburger-menu">
+          <div class="hamburger-icon">
+            <span></span>
+            <span></span>
+            <span></span>
+          </div>
+          <ul class="menu-links">
+            <li><a href="projects.html" data-jp="プロジェクト">WORK</a></li>
+            <li><a href="resume.html" data-jp="レジュメ">RESUME</a></li>
+            <li><a href="gallery.html" data-jp="ライブラリー">GALLERY</a></li>
+            <li><a href="contact.html" data-jp="コンタクト">CONTACT</a></li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <section id="profile">
+    <div class="section__pic-container">
+      <!-- Existing content -->
+    </div>
+    <div class="section__text">
+      <video class="animated-video" autoplay loop muted playsinline>
+        <source src="./images/sampl-2025-2-14_1-20-7.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+      </video>
+      <p data-jp="データとの愛好家">Data & AI Enthusiast</p>
+      <p data-jp="デ好好ータ家">Visual Designer</p>
+      <p data-jp="デ好タ好好好">noahriley.perez@gmail.com</p>
+    </div>
+  </section>
+
+  <!-- Work Section -->
+  <section id="work">
+    <div class="work-container">
+      <h2 class="section-title">WORK</h2>
+      <div class="carousel">
+        <button class="carousel-btn prev">&#10094;</button>
+        <div class="carousel-inner">
+          <!-- Work Item 1 -->
+          <div class="work-item">
+            <div class="work-info">
+              <h3>Autra.ai Web Application</h3>
+              <p>Modern, responsive website built with React, Vite, and TailwindCSS to improve UI/UX. <br> <br> Developed and deployed in under two weeks using Replit Agent, the project streamlined customer signups and <br> enhanced the brand's online presence.</p>
+              <a href="#" class="btn view-project" data-modal="modal-autra">View Project</a>
+            </div>
+            <div class="work-image">
+              <img src="./images/autra-new1.PNG" alt="Autra Academy Web Application">
+            </div>
+          </div>
+          <!-- Work Item 2 -->
+          <div class="work-item">
+            <div class="work-info">
+              <h3>Full-Stack Robotics Tournament Management System for USEL</h3>
+              <p>Co-developed a full-stack Django web app for managing robotics tournaments, <br>replacing manual tools with automated team management, scoring, and media upload support. <br><br>The project improved operational efficiency for WRO events and strengthened my skills in backend modeling, <br>responsive UI design, and collaborative Git workflows.</p>
+              <a href="#" class="btn view-project" data-modal="modal-usel-tournament">View Project</a>
+            </div>
+            <div class="work-image">
+              <img src="./images/USEL.PNG" alt="USEL Tournament Web Application">
+            </div>
+          </div>
+          <!-- Work Item 3 -->
+          <div class="work-item">
+            <div class="work-info">
+              <h3>Modular AI Art Generation Platform</h3>
+              <p>Built a modular AI art generation system using ComfyUI and Stable Diffusion, enabling fine-grained<br> control over prompts, LoRA tuning, and reproducible outputs. <br><br>This project sharpened my skills in AI workflow design, prompt engineering, and system optimization for<br> creative tooling.</p>
+              <a href="#" class="btn view-project" data-modal="modal-comfyui">View Project</a>
+            </div>
+            <div class="work-image">
+              <img src="./images/ComfyUI_00029_.png" alt="ComfyUI/StabilityMatrix Art">
+            </div>
+          </div>
+          <!-- Work Item 4 -->
+          <div class="work-item">
+            <div class="work-info">
+              <h3>Digital Sales Funnel System for USEL</h3>
+              <p>Redesigned and managed digital sales funnels using ClickFunnels and Mailchimp to improve conversion <br> rates, automate email campaigns, and streamline product checkout flows.</p>
+              <a href="#" class="btn view-project" data-modal="modal-usel-web-funnels">View Project</a>
+            </div>
+            <div class="work-image">
+              <img src="./images/USEL2.png" alt="USEL Web Funnels">
+            </div>
+          </div>
+        </div>
+        <button class="carousel-btn next">&#10095;</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Resume Section with updated experience items -->
+  <section id="resume">
+    <div class="resume-bg-container">
+      <h2 class="section-title">RESUME</h2>
+      <div class="resume-wrapper">
+        <div class="resume-inner-container">
+          <div class="resume-sidebar">
+            <h3>noah riley perez</h3>
+            <p>Developer</p>
+            <p>Entry level developer with hands-on expertise building modern web solutions, looking to leverage my experience in a large-scale environment.</p>
+            <div class="resume-contact">
+              <p>Email: noahriley.perez@gmail.com</p>
+              <p>Phone: (510) 410 6157</p>
+            </div>
+            <div class="resume-tech">
+              <br>
+              <h4>Technologies</h4>
+              <ul>
+                <li>HTML/CSS/JavaScript</li>
+                <li>React</li>
+                <li>Node.js</li>
+                <li>Vite.js</li>
+                <li>Django</li>
+                <li>Python</li>
+                <li>Pandas</li>
+                <li>SQL</li>
+                <li>SQLlite</li>
+                <li>C++</li>
+                <li>Java</li>
+                <li>TypeScript</li>
+                <li>Github/GitFlow</li>
+                <li>Git CI/CD</li>
+                <li>Creative Coding</li>
+                <li>Processing/p5.js</li>
+              </ul>
+            </div>
+          </div>
+          <div class="resume-main">
+            <div class="experience-section">
+              <h3>Experience</h3>
+              <div class="experience-item">
+                <div class="experience-content">
+                  <h4>University of California, Riverside</h4>
+                  <p>Undergraduate B.S. in Computer Science with Business Applications</p>
+                </div>
+                <div class="experience-date">
+                  June 2024
+                </div>
+              </div>  
+              <div class="experience-item">
+                <div class="experience-content">
+                  <h4>Autra.ai – Web Developer, Robotics Program Manager</h4>
+                  <p>Led complete overhaul of the Autra Academy website for an AI-driven education start up company, improving UI/UX and accelerating customer acquisition.</p>
+                  <ul>
+                    <li>Engineered the frontend using React and Vite.js for high-performance development and optimized production builds; implemented a clean, responsive design with TailwindCSS.</li>
+                    <li>Accelerated development workflows by leveraging Replit Agent for AI-assisted coding and testing, delivering the production-ready static site in under two weeks.</li>
+                    <li>Improved data integrity and developer productivity by setting up a typed database layer with Drizzle ORM, and maintained a modular codebase organized via file-based routing (components, pages, routes).</li>
+                    <li>Coordinated cross-functional efforts with non-technical stakeholders</li>
+                  </ul>
+                  <br>
+                  <p>Robotics Program Leadership</p>
+                  <ul>
+                    <li>Oversaw the design and delivery of robotics curriculum and managed a team of instructors, ensuring engaging and hands-on STEM education for young learners.</li>
+                  </ul>
+                </div>
+                <div class="experience-date">
+                  Sept 2024 – Now
+                </div>
+              </div>
+              <div class="experience-item">
+                <div class="experience-content">
+                  <h4>USEL – Web Developer</h4>
+                  <p>Co-developed a centralized platform to streamline the organization and management of robotics tournaments for the World Robot Olympiad (WRO), replacing fragmented tools such as spreadsheets and paper brackets.</p>
+                  <ul>
+                    <li>Engineered a robust backend using Django to model core entities and implemented efficient CRUD operations through Django views, templates, and ORM.</li>
+                    <li>Built a responsive frontend with Bootstrap, HTML, CSS, and JavaScript—integrating interactive UI components such as modals, carousels, and dynamic bracket views to ensure an intuitive user experience for non-technical users.</li>
+                    <li>Defined clear, RESTful URL mappings and maintained a modular codebase while using Git for version control to support team collaboration and rigorous code management.</li>
+                    <li>Centralized and automated the tournament management process, significantly improving operational efficiency and scalability, with positive feedback from organizers and participants.</li>
+                    <li>Laid the groundwork for future enhancements, including real-time scoring, analytics dashboards, and role-based permissions.</li>
+                  </ul>
+                  <br>
+                  <p>ClickFunnels & Marketing Initiatives</p>
+                    <ul>
+                      <li>Collaborated with marketing and operations teams to manage the sales funnel infrastructure using ClickFunnels and Mailchimp, streamlining the customer journey from landing page to checkout.</li>
+                      <li>Edited and maintained product landing pages using a visual CMS editor to incorporate custom sections for value propositions, testimonials, pricing tables, and embedded videos—ensuring cross-device responsiveness and brand consistency..</li>
+                      <li>Enabled rapid campaign launches through reusable funnel templates and pre-set email flows, establishing a sustainable, repeatable system for future digital product initiatives.</li>
+                      <li>Leveraged ClickFunnels analytics to monitor funnel performance, routinely testing and refining layouts and messaging to reduce abandonment rates and improve conversion rates.</li>
+                    </ul>
+                </div>
+                <div class="experience-date">
+                  Feb – Sept 2024
+                </div>
+              </div>
+              <div class="experience-item">
+                <div class="experience-content">
+                  <h4>Sabaidee Fest – E-Commerce Web Manager</h4>
+                  <p>Managed online platforms ensuring key customer flows along with Shopify funnels and purchase pages.</p>
+                  <ul>
+                    <li>Maintained accurate inventory across selling platforms.</li>
+                    <li>Tracked key customer segments using Shopify analytics.</li>
+                  </ul>
+                </div>
+                <div class="experience-date">
+                  Feb – Aug 2024
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <p>&copy; 2024 Noah Riley All rights reserved.</p>
+  </footer>
+
+  <!-- Individual Project Modals -->
+  <!-- Modal for Autra Academy Web Application -->
+  <div id="modal-autra" class="modal">
+    <div class="modal-content">
+      <span class="modal-close">&times;</span>
+      <h2>Autra.ai Website Redevelopment</h2>
+      <!-- Project Details -->
+      <section class="modal-section project-details">
+        <h3>The Problem</h3>
+        <p>Autra.ai, an AI-driven education company serving children aged 5–12, required a fast and modern website overhaul. The previous website had outdated content, poor UI/UX, and lacked integration with our customer management platform, WellnessLiving. These issues hindered our ability to sign up and retain customers efficiently.</p>
+      </section>
+      <!-- Project Overview Image -->
+      <div class="modal-image">
+        <img src="./images/autra-new1.PNG" alt="Autra Academy Web Application">
+      </div>
+      <!-- The Problem Section -->
+      <section class="modal-section problem-section">
+        <h3>Project Goals</h3>
+          <ul>
+            <li>Rapidly deploy a new marketing and scheduling platform for business continuity</li>
+            <li>Improve user experience and update branding</li>
+            <li>Enable direct customer bookings via WellnessLiving integration</li>
+            <li>Ensure maintainability and scalability of the codebase using modern frontend tooling</li>
+          </ul>
+      </section>
+      <!-- Problem Illustration Image -->
+      <div class="modal-image">
+        <img src="./images/utr.png" alt="Problem Illustration">
+      </div>
+      <!-- Details Section with Gallery -->
+      <section class="modal-section details-section">
+        <h3>Details</h3>
+        <h3>Implementation  Highlights</h3>
+          <ul>
+            <li>Frontend Framework: Built with Vite.js and React, ensuring fast local dev environment and optimized builds.</li>
+            <li>UI Design: Used TailwindCSS to create a clean, responsive, and mobile-friendly layout.</li>
+            <li>Database Setup: Set up schema and typed queries using Drizzle ORM, improving developer productivity and safety.</li>
+            <li>Tooling: Developed within Replit using Replit Agent, speeding up code generation and testing workflows.</li>
+            <li>Bookings Integration: Embedded direct booking links and smart redirects to WellnessLiving, streamlining the scheduling process.</li>
+            <li>DevOps & Deployment: Deployed the final website to a production domain via Replit's deployment tooling and custom scripts.</li>
+          </ul>
+        <h3>Architecture Overview</h3>
+        <ul>
+          <li>drizzle.config.ts: Drizzle ORM setup for managing typed queries and schema</li>
+          <li>vite.config.ts: Custom configuration for optimized builds</li>
+          <li>tailwind.config.ts: Design token and theme customization</li>
+          <li>components/, pages/, routes/: Modular component and routing structure using file-based routing and layout wrappers</li>
+          <li>public/: Static assets for meta tags, branding, and icons</li>
+        </ul>
+        <h3>Challenges and Solutions </h3>
+        <ul>
+          <li>Rapid Launch Timeline: Balanced speed and quality by leveraging Replit Agent and strong component architecture</li>
+          <li>Integration with External System (WellnessLiving): Used deep linking and consistent UX wrappers to maintain brand presence even when directing off-site</li>
+          <li>Content Changes from Non-Tech Stakeholders: Created structured theme and layout JSON configs to easily adapt without redeploying</li>
+        </ul>
+        <div class="gallery">
+          <img src="./images/18.jpg" alt="Gallery Image 1">
+          <img src="./images/12.jpg" alt="Gallery Image 2">
+          <img src="./images/14.jpg" alt="Gallery Image 3">
+        </div>
+      </section>
+      <!-- Concluding Remarks Section -->
+      <section class="modal-section concluding-remarks">
+        <h3>Impact and Conclusion</h3>
+        <ul>
+          <li>New website deployed in under 2 weeks</li>
+          <li>Significant improvement in navigation and mobile usability</li>
+          <li>Re-enabled business transactions and class signups directly through the site</li>
+          <li>Increased brand presence through a cleaner, more professional web presence</li>
+        </ul>
+        <p>This project demonstrated my ability to rapidly build and deploy a modern, production-ready website under tight business constraints. By combining my technical skills in React, Vite, Drizzle ORM, and Tailwind with practical problem-solving and communication with non-technical stakeholders, I delivered a solution that met real business needs.
+          It also marked my first time working with third-party tooling like WellnessLiving and using AI pair programming via Replit Agent, giving me experience in adapting to new tools and ecosystems quickly.</p>
+      </section>
+    </div>
+  </div>
+
+  <!-- Modal for USEL Tournament Web Application -->
+  <div id="modal-usel-tournament" class="modal">
+    <div class="modal-content">
+      <span class="modal-close">&times;</span>
+      <h2>USEL Tournament Management Web Application</h2>
+      <section class="modal-section project-details">
+        <h3>Overview</h3>
+        <p>At USEL (United States Engineering League), I co-developed a web application aimed at streamlining the organization and management of robotics tournaments, specifically aligning with the requirements of the World Robot Olympiad (WRO). The application was designed to facilitate the creation, tracking, and administration of tournaments across multiple game modes, enhancing the efficiency of event management for organizers and participants.</p>
+      </section>
+      <div class="modal-image">
+        <img src="./images/USEL.PNG" alt="USEL Tournament Web Application">
+      </div>
+      <section class="modal-section problem-section">
+        <h3>The Problem</h3>
+        <p>Organizing robotics tournaments at scale often involved fragmented tools (Google Sheets, manual score tracking, paper brackets). USEL needed a centralized platform to:</p>
+          <ul>
+            <li>Allow users to create and manage tournaments across multiple game modes</li>
+            <li>Automate team and bracket management</li>
+            <li>Support tournament media uploads and updates</li>
+            <li>Be intuitive enough for non-technical users (e.g., coaches, teachers)</li>
+          </ul>
+      </section>
+      <div class="modal-image">
+        <img src="./images/USEL.PNG" alt="Problem Illustration">
+      </div>
+      <section class="modal-section details-section">
+        <h3>Details</h3>
+        <p>Detailed insights into system architecture, design, and implementation processes.</p>
+        <h3>Backend (Django)</h3>
+            <ul>
+              <li>Modeled core entities: Tournaments, Teams, Players, Game Modes, Scores, Brackets</li>
+              <li>Enabled CRUD operations for all entities using Django views and templates</li>
+              <li>Designed relational structure to support multiple game types:
+                <ul>
+                  <li>Time-Based</li>
+                  <li>Score-Based</li>
+                  <li>Hybrid Mode (time + score)</li>
+                </ul>
+              </li>
+              <li>Used Django Admin and ORM to manage internal content efficiently</li>
+            </ul>
+          <h3>Frontend (Bootstrap + HTML/CSS/JS)</h3>
+          <ul>
+            <li>Created a responsive UI using Bootstrap.</li>
+            <li>Implemented interactive UI components like modals, carousels, and dynamic bracket views</li>
+            <li>Ensured consistent styling across pages (homepage, tournament dashboards, team pages)</li>
+          </ul>
+          <h3>Routing and URL Mapping</h3>
+            <ul>
+              <li>URL Configuration: Defined clear and RESTful URL patterns in Django to map views to specific endpoints, facilitating intuitive navigation and API access.</li>
+              <li>View Functions: Developed corresponding view functions to handle requests and responses, processing data and rendering appropriate templates or JSON responses.</li>
+            </ul>
+            <h3>Version Control</h3>
+            <ul>
+              <li>Git Integration: Employed Git for version control, managing codebase changes, collaborating with team members, and maintaining a clear commit history</li>
+            </ul>
+        <div class="gallery">
+          <img src="./images/18.jpg" alt="Gallery Image 1">
+          <img src="./images/12.jpg" alt="Gallery Image 2">
+          <img src="./images/14.jpg" alt="Gallery Image 3">
+        </div>
+      </section>
+      <section class="modal-section concluding-remarks">
+        <h3>Impact and Conclusion</h3>
+          <ul>
+            <li>Operational Efficiency: Replaced spreadsheets and manual systems with a single web app used internally by USEL for tournament prep.</li>
+            <li>Scalability: Provided a foundation for future enhancements, including real-time scoring, analytics dashboards, and role-based permissions</li>
+            <li>User Adoption: Received positive feedback from tournament organizers and participants for its intuitive interface and reliability, leading to widespread adoption within USEL events.</li>
+          </ul>
+        <p>This project helped me sharpen my full-stack web development skills in a real-world, team-based setting. I gained hands-on experience in: </p>
+
+         <li>Django MVC design and custom model relationships</li> 
+         <li>Building reusable, responsive UI with Bootstrap</li>
+         <li>Designing software to support structured educational competitions</li>
+         <li> Collaboration and version control workflows using Git</li>
+         
+      </section>
+    </div>
+  </div>
+
+  <!-- Modal for ComfyUI/StabilityMatrix Art -->
+  <div id="modal-comfyui" class="modal">
+    <div class="modal-content">
+      <span class="modal-close">&times;</span>
+      <h2>AI Art Generation System</h2>
+      <section class="modal-section project-details">
+        <h3>Overview</h3>
+        <p>self-directed project explored AI-generated art using diffusion models and modular visual pipelines. I built a system for generating high-quality, stylized images by customizing workflows within ComfyUI, a node-based interface for Stable Diffusion. The goal was to understand how LoRA models, base model architecture, and visual prompt workflows could be optimized for flexible, reproducible image generation.</p>
+      </section>
+      <div class="modal-image">
+        <img src="./images/ComfyUI_00006_.png" alt="ComfyUI/StabilityMatrix Art">
+      </div>
+      <section class="modal-section problem-section">
+        <h3>The Problem</h3>
+        <p>Generative AI art tools like MidJourney or DALL·E provide limited customization or reproducibility. My goal was to build a highly customizable AI art pipeline that:</p>
+          <ul>
+            <li>Gives fine-grained control over prompt input, style, and generation parameters</li>
+            <li>Enables workflow modularity for experimentation with base models and LoRA adapters</li>
+            <li>Supports repeatable generation using consistent seed and sampling setups</li>
+            <li>Allows easy expansion with new models, prompts, and visual effects</li>
+          </ul>
+      </section>
+      <div class="modal-image">
+        <img src="./images/ComfyUI_00006_.png" alt="Problem Illustration">
+      </div>
+      <section class="modal-section details-section">
+        <h3>Breakdown</h3>
+        <p>The project dives into model tuning, prompt engineering, and creative adjustments.</p>
+          <h3>Environment Setup & Tooling</h3>
+            <ul>
+              <li>Installed and configured ComfyUI, a node-based UI for building image generation workflows.</li>
+              <li>Integrated Stability Matrix for stable diffusion model access and workflow template management.</li>
+              <li>Loaded base models (e.g., Stable Diffusion v1.5, v2.1) into the runtime environment</li>
+            </ul>
+          <h3>Workflow Creation</h3>
+          <ul>
+            <li>Designed custom generation pipelines by chaining visual nodes (e.g., Text Prompt → Sampler → Model Loader → Output).</li>
+            <li>Incorporated LoRA (Low-Rank Adaptation) workflows for injecting stylized weights into base models, allowing domain-specific generation without full retraining</li>
+          </ul>
+          <h3>Prompt Engineering & Testing</h3>
+          <ul>
+            <li>Iteratively tested sampling methods (Euler, DPM++), CFG scale, denoising, and seed variation to evaluate output quality and reproducibility.</li>
+            <li>Tuned LoRA strength and conditioning values to blend styles without overfitting</li>
+            <li>Repeatable Outputs: Used fixed seeds and prompt templates to ensure image regeneration and comparison.</li>
+          </ul>
+        <div class="gallery">
+          <img src="./images/18.jpg" alt="Gallery Image 1">
+          <img src="./images/12.jpg" alt="Gallery Image 2">
+          <img src="./images/14.jpg" alt="Gallery Image 3">
+        </div>
+      </section>
+      <section class="modal-section concluding-remarks">
+        <h3>Impact and Conclusion</h3>
+        <p>This side project gave me hands-on experience with real-world AI tooling and workflow engineering. It sharpened my skills in system design, modular development, and AI tool integration—all in a context where experimentation and optimization were key.
+
+          It reflects my drive to not just use powerful AI tools, but understand and shape the systems behind them. I’m especially excited to apply this kind of modular thinking and system design in software development, creative tools, or applied AI projects.</p>
+        <h3>Learnings</h3>
+        <ul>
+          <li>Gained practical understanding of diffusion models, prompt engineering, and modular UI-based AI pipelines.</li>
+          <li>Deepened technical knowledge in model interoperability, visual UI node architecture, and GPU resource management.</li>
+        </ul>
+      </section>
+    </div>
+  </div>
+
+  <!-- Modal for USEL Web Funnels -->
+  <div id="modal-usel-web-funnels" class="modal">
+    <div class="modal-content">
+      <span class="modal-close">&times;</span>
+      <h2>USEL Sales Funnels & Marketing Automation</h2>
+      <section class="modal-section project-details">
+        <h3>Overview</h3>
+        <p>At USEL, I collaborated with the marketing and operations team to overhaul and manage our sales funnel infrastructure using ClickFunnels and Mailchimp. The goal was to streamline digital product sales, automate email marketing, and enhance the customer journey from landing page to checkout.</p>
+      </section>
+      <div class="modal-image">
+        <img src="./images/USEL2.png" alt="USEL Web Funnels">
+      </div>
+      <section class="modal-section problem-section">
+        <h3>Problem Statement</h3>
+        <p>USEL needed a reliable and scalable system to:</p>
+          <ul>
+            <li>Convert web traffic into paying customers</li>
+            <li>Deliver consistent marketing messaging through email</li>
+            <li>Simplify management of product pages and backend workflows</li>
+            <li> A/B test performance to improve results over time</li>
+          </ul>
+          <p>The existing funnel process was inconsistent, partially manual, and not optimized for conversions or growth.</p>  
+      </section>
+      <div class="modal-image">
+        <img src="./images/USEL2.png" alt="Problem Illustration">
+      </div>
+      <section class="modal-section details-section">
+        <h3>Details</h3>
+        <p>Insights into strategy, implementation, and performance metrics of the deployed funnels.</p>
+        <p>The existing funnel process was inconsistent, partially manual, and not optimized for conversions or growth. My Contributions:</p> 
+          <ul>
+            <li>Sales Funnel Architecture:
+              Designed and implemented product funnels in ClickFunnels including landing pages, upsells, downsells, order forms, and confirmation pages. Used platform triggers to automate user flows based on behavior.</li>
+            <li>CMS Page Configuration:
+              Edited and maintained product landing pages using a visual CMS editor with custom sections for value propositions, testimonials, pricing tables, and embedded videos. Ensured cross-device responsiveness and brand consistency.
+              
+              </li>
+            <li>Email Marketing Automation (Mailchimp):
+              Set up broadcast campaigns and automated email flows (abandoned cart reminders, welcome series, upsell follow-ups).</li>
+            <li> Product & Store Setup:
+              Created digital product listings with variant options, pricing rules, and funnel product triggers for upsell logic.</li>
+            <li>Performance Testing & Iteration:
+              Leveraged ClickFunnels analytics and Google Analytics to monitor funnel performance. Regularly tested and refined layout and messaging based on performance data. </li>
+          </ul>
+        <div class="gallery">
+          <img src="./images/18.jpg" alt="Gallery Image 1">
+          <img src="./images/12.jpg" alt="Gallery Image 2">
+          <img src="./images/14.jpg" alt="Gallery Image 3">
+        </div>
+      </section>
+      <section class="modal-section concluding-remarks">
+        <h3>Impact and Conclusion</h3>
+        <ul>
+          <li>Reduced funnel abandonment rates and increased product conversions by streamlining page design and checkout flows</li>
+          <li>Enabled marketing team to launch campaigns faster with reusable funnel templates and pre-set email flows</li>
+          <li>Created a sustainable and repeatable system for future digital product launches</li>
+        </ul>
+        <p>This project sharpened my skills in platform configuration, marketing automation, conversion optimization, and cross-team collaboration. It also gave me valuable experience in applying no-code/low-code tools like ClickFunnels and Mailchimp within a product-driven business context. The result was a more cohesive digital sales experience and an operational process that supported business growth.</p>
+      </section>
+    </div>
+  </div>
+
+  <script>
+    // Modal JavaScript is now in scripts.js
+  </script>
+  <script src="scripts.js"></script>
+</body>
+</html>
