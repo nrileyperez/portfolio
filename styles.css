@@ -784,7 +784,7 @@ footer p {
 }
 
 /* --- MOBILE OPTIMIZATION --- */
-@media (max-width: 768px) {
+@media (max-width: 765px) {
   /* Remove extra top padding to allow nav flush at the top */
   body {
     padding-top: 0;
